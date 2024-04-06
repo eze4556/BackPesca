@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const sorteoSchema = new mongoose.Schema({
-  foto: { type: String, required: true },
+  foto: { type: String,},
   titulo: { type: String, required: true },
   nombre: { type: String, required: true },
   descripcion: { type: String, required: true }

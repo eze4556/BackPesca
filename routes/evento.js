@@ -7,6 +7,6 @@ const eventoController = require('../controller/eventoController');
 router.post('/nuevo-evento', eventoController.createEvento);
 
 // Ruta para eliminar un evento
-router.delete('/evento/:id', eventoController.deleteEvento);
+router.delete('/:id', eventoController.deleteEvento);
 
 module.exports = router;

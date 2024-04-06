@@ -4,6 +4,6 @@ const router = express.Router();
 const nuevoProductoController = require("../controller/nuevoPcontroller");
 
 // Ruta para crear un nuevo producto
-router.post('/nuevoProducto', nuevoProductoController.createNuevoProducto);
+router.post('/', nuevoProductoController.createNuevoProducto);
 
 module.exports = router;

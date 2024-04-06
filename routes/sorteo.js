@@ -7,6 +7,6 @@ const sorteoController = require('../controller/sorteoController');
 router.post('/nuevo-sorteo', sorteoController.createSorteo);
 
 // Ruta para eliminar un sorteo
-router.delete('/sorteo/:id', sorteoController.deleteSorteo);
+router.delete('/:id', sorteoController.deleteSorteo);
 
 module.exports = router;

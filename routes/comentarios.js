@@ -7,6 +7,6 @@ const comentarioController = require('../controller/comentarioController');
 router.post('/nuevo-comentario', comentarioController.createComentario);
 
 // Ruta para eliminar un comentario
-router.delete('/comentario/:id', comentarioController.deleteComentario);
+router.delete('/:id', comentarioController.deleteComentario);
 
 module.exports = router;

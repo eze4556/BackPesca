@@ -1,7 +1,7 @@
 // routes/comentarioRoutes.js
 const express = require('express');
 const router = express.Router();
-const comentarioController = require('../controllers/comentarioController');
+const comentarioController = require('../controller/comentarioController');
 
 // Ruta para agregar un nuevo comentario
 router.post('/nuevo-comentario', comentarioController.createComentario);

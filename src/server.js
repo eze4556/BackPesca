@@ -37,11 +37,11 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => console.log("Connected to MongoDB"));
 
 // Usar rutas
-app.use('/api', nuevoProductoRoutes);
-app.use('/api', eventoRoutes);
-app.use('/api', comentarioRoutes);
-app.use('/api', sorteoRoutes);
-app.use('/api', producto)
+app.use('/nuevoProducto', nuevoProductoRoutes);
+app.use('/evento', eventoRoutes);
+app.use('/comentario', comentarioRoutes);
+app.use('/sorteo', sorteoRoutes);
+app.use('/producto', producto)
 
 
 // Start server

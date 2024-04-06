@@ -1,7 +1,7 @@
 // routes/eventoRoutes.js
 const express = require('express');
 const router = express.Router();
-const eventoController = require('../controllers/eventoController');
+const eventoController = require('../controller/eventoController');
 
 // Ruta para crear un nuevo evento
 router.post('/nuevo-evento', eventoController.createEvento);

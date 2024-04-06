@@ -1,9 +1,9 @@
-// models/Viaje.js
+// models/evento.js
 const mongoose = require('mongoose');
 
-const viajeSchema = new mongoose.Schema({
+const eventoSchema = new mongoose.Schema({
   foto: { type: String, required: true },
   descripcion: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Viaje', viajeSchema);
+module.exports = mongoose.model('Evento', EventoSchema);

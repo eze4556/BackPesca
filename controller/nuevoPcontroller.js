@@ -1,5 +1,5 @@
 // controllers/nuevoProductoController.js
-const NuevoProducto = require('../models/NuevoProducto');
+const NuevoProducto = require('../models/nuevoProducto');
 
 // Controlador para crear un nuevo producto
 exports.createNuevoProducto = async (req, res) => {

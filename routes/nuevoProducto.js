@@ -1,9 +1,9 @@
 // routes/nuevoProductoRoutes.js
 const express = require('express');
 const router = express.Router();
-const nuevoProductoController = require('../controller/nuevoPcontroller');
+const nuevoProductoController = require("../controller/nuevoPcontroller");
 
 // Ruta para crear un nuevo producto
-router.post('/nuevo-producto', nuevoProductoController.createNuevoProducto);
+router.post('/', nuevoProductoController.createNuevoProducto);
 
 module.exports = router;

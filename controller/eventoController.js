@@ -1,5 +1,5 @@
 // controllers/eventoController.js
-const Evento = require('../models/Evento');
+const Evento = require('../models/evento');
 
 // Controlador para crear un nuevo evento
 exports.createEvento = async (req, res) => {

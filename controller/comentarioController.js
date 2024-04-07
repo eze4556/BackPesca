@@ -1,5 +1,5 @@
 // controllers/comentarioController.js
-const Comentario = require('../models/Comentario');
+const Comentario = require('../models/comentarios');
 
 // Controlador para agregar un nuevo comentario
 exports.createComentario = async (req, res) => {

@@ -6,4 +6,5 @@ const nuevoProductoController = require("../controller/nuevoPcontroller");
 // Ruta para crear un nuevo producto
 router.post('/', nuevoProductoController.createNuevoProducto);
 
+
 module.exports = router;

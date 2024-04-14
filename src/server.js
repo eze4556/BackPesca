@@ -13,7 +13,8 @@ const eventoRoutes = require('../routes/evento');
 const comentarioRoutes = require('../routes/comentarios');
 const sorteoRoutes = require('../routes/sorteo');
 const producto = require('../routes/producto')
-
+const categoria = require('../routes/categoria')
+const quienesSomos = require('../routes/quienesSomos')
 
 
 const app = express();
@@ -42,6 +43,8 @@ app.use('/evento', eventoRoutes);
 app.use('/comentario', comentarioRoutes);
 app.use('/sorteo', sorteoRoutes);
 app.use('/producto', producto)
+app.use('/categoria',categoria)
+app.use('quienesSomos', quienesSomos)
 
 
 // Start server

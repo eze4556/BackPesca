@@ -10,13 +10,13 @@ console.log('MONGO_URI:', process.env.MONGO_URI);
 
 
 // Importar rutas y controladores
-const nuevoProductoRoutes = require('../routes/nuevoProducto');
-const eventoRoutes = require('../routes/evento');
-const comentarioRoutes = require('../routes/comentarios');
-const sorteoRoutes = require('../routes/sorteo');
-const producto = require('../routes/producto')
-const categoria = require('../routes/categoria')
-const quienesSomos = require('../routes/quienesSomos')
+const nuevoProductoRoutes = require('./routes/nuevoProducto');
+const eventoRoutes = require('./routes/evento');
+const comentarioRoutes = require('./routes/comentarios');
+const sorteoRoutes = require('./routes/sorteo');
+const producto = require('./routes/producto')
+const categoria = require('./routes/categoria')
+const quienesSomos = require('./routes/quienesSomos')
 
 
 

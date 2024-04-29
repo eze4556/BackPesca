@@ -13,6 +13,16 @@ exports.createSorteo = async (req, res) => {
       nombre: req.body.nombre,
       descripcion: req.body.descripcion 
     });
+
+    console.log('Body:', req.body); 
+    console.log('File:', req.file); 
+    const nuevoSorteo = new Sorteo({
+      imagen: req.file.filename,
+      titulo: req.body.titulo,
+      fecha: req.body.fecha,
+      nombre: req.body.nombre,
+      descripcion: req.body.descripcion 
+    });
     await nuevoSorteo.save();
     res.status(201).json({ message: 'Sorteo agregado exitosamente' });
   } catch (error) {

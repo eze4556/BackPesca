@@ -9,6 +9,8 @@ const nuevoProductoSchema = new mongoose.Schema({
   descuento: { type: Number, default: 0 },
   precioFinal: { type: Number },
   categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }] // Referencia a la categoría
+  precioFinal: { type: Number },
+  categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }] // Referencia a la categoría
 });
 
 module.exports = mongoose.model('NuevoProducto', nuevoProductoSchema);

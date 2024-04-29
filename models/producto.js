@@ -11,6 +11,10 @@ const productoSchema = new mongoose.Schema({
   categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }] // Referencia a la categoría
 
 
+  precioFinal: { type: Number },
+  categorias: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Categoria' }] // Referencia a la categoría
+
+
 });
 
 module.exports = mongoose.model('Producto', productoSchema);

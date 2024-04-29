@@ -4,6 +4,10 @@ const Categoria = require('../models/categoria');
 
 
 
+const Categoria = require('../models/categoria');
+
+
+
 
 exports.createNuevoProducto = async (req, res) => {
   try {

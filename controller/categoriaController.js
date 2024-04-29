@@ -4,16 +4,9 @@ const Categoria = require('../models/categoria');
 
 exports.createCategoria = async (req, res) => {
   try {
-
-    console.log('Body:', req.body); 
-    console.log('File:', req.file); 
-    const nuevaCategoria = new Categoria({
-      nombre: req.body.nombre,
-     
-      imagen: req.file.filename 
-    });
-    await nuevaCategoria.save();
-    res.status(201).json({ message: 'Categoría agregada exitosamente' });
+    const nuevoCategoria = new Categoria(req.body);
+    await nuevoCategoria.save();
+    res.status(201).json({ message: 'Categoria agregado exitosamente' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -63,9 +56,9 @@ exports.updateCategoria = async (req, res) => {
     if (req.body.nombre != null) {
       categoria.nombre = req.body.nombre;
     }
-    // if (req.file.filename  != null) {
-    //   categoria.imagen = req.file.filename;
-    // }
+    if (req.body.foto != null) {
+      categoria.foto = req.body.foto;
+    }
     const categoriaActualizada = await categoria.save();
     res.json(categoriaActualizada);
   } catch (error) {

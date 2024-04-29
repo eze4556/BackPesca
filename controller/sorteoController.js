@@ -64,8 +64,8 @@ exports.updateSorteo = async (req, res) => {
     if (req.body.nombre != null) {
       sorteo.nombre = req.body.nombre;
     }
-    if (req.file.filename != null) {
-      sorteo.imagen =  req.file.filename;
+    if (req.body.foto != null) {
+      sorteo.foto = req.body.foto;
     }
     if (req.body.titulo != null) {
       sorteo.titulo = req.body.titulo;

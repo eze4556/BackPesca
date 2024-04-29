@@ -4,15 +4,7 @@ const Sorteo = require('../models/sorteo');
 exports.createSorteo = async (req, res) => {
   try {
 
-    console.log('Body:', req.body); 
-    console.log('File:', req.file); 
-    const nuevoSorteo = new Sorteo({
-      imagen: req.file.filename,
-      titulo: req.body.titulo,
-      fecha: req.body.fecha,
-      nombre: req.body.nombre,
-      descripcion: req.body.descripcion 
-    });
+  
 
     console.log('Body:', req.body); 
     console.log('File:', req.file); 

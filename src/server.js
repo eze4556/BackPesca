@@ -9,20 +9,6 @@ console.log('MONGO_URI:', process.env.MONGO_URI);
 
 
 
-// Configuración de multer para almacenar los archivos en un directorio específico
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './uploads'); // Directorio donde se almacenarán los archivos
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + '-' + file.originalname); // Nombre del archivo
-//   }
-// });
-
-// // Crear la instancia de multer con la configuración
-// const upload = multer({ storage: storage });
-
-
 // Importar rutas y controladores
 const nuevoProductoRoutes = require('../routes/nuevoProducto');
 const eventoRoutes = require('../routes/evento');
@@ -47,7 +33,7 @@ app.use('/uploads', express.static('uploads'))
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('¡Backend de tu aplicación de pesca funcionando!');
+  res.send('¡Backend de tu aplicación de pesca funcionando 222!');
 });
 
 

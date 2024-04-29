@@ -33,7 +33,7 @@ app.use('/uploads', express.static('uploads'))
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('¡Backend de tu aplicación de pesca funcionando 222!');
+  res.send('¡Backend de tu aplicación de pesca funcionando perfectamente!');
 });
 
 

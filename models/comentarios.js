@@ -2,8 +2,9 @@
 const mongoose = require('mongoose');
 
 const comentarioSchema = new mongoose.Schema({
-  comentario: { type: String, required: true },
-  puntuacion: { type: Number, required: true }
+  nombre: {type: String},
+  descripcion: { type: String},
+  puntuacion: { type: Number}
 });
 
 module.exports = mongoose.model('Comentario', comentarioSchema);

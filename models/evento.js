@@ -3,8 +3,10 @@
 const mongoose = require('mongoose');
 
 const eventoSchema = new mongoose.Schema({
-  foto: { type: String},
-  descripcion: { type: String, required: true }
+  imagen: { type: String},
+  nombre: { type: String},
+  fecha: { type: Date},
+  descripcion: { type: String }
 });
 
 module.exports = mongoose.model('Evento', eventoSchema);

@@ -4,7 +4,10 @@ const router = express.Router();
 const comentarioController = require('../controller/comentarioController');
 
 // Ruta para agregar un nuevo comentario
-router.post('/nuevo-comentario', comentarioController.createComentario);
+router.post('/', comentarioController.createComentario);
+
+//ruta para traer todos los comentarios
+router.get('/', comentarioController.getAllComentarios);
 
 // Ruta para eliminar un comentario
 router.delete('/:id', comentarioController.deleteComentario);

@@ -4,7 +4,23 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
+const multer = require('multer');
 console.log('MONGO_URI:', process.env.MONGO_URI); 
+
+
+
+// Configuración de multer para almacenar los archivos en un directorio específico
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './uploads'); // Directorio donde se almacenarán los archivos
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + '-' + file.originalname); // Nombre del archivo
+//   }
+// });
+
+// // Crear la instancia de multer con la configuración
+// const upload = multer({ storage: storage });
 
 
 // Importar rutas y controladores
@@ -13,6 +29,8 @@ const eventoRoutes = require('../routes/evento');
 const comentarioRoutes = require('../routes/comentarios');
 const sorteoRoutes = require('../routes/sorteo');
 const producto = require('../routes/producto')
+const categoria = require('../routes/categoria')
+const quienesSomos = require('../routes/quienesSomos')
 
 
 
@@ -22,6 +40,10 @@ const PORT = process.env.PORT || 5000;
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+// // Archivos Estaticos
+app.use('/uploads', express.static('uploads'))
 
 // Routes
 app.get('/', (req, res) => {
@@ -42,6 +64,8 @@ app.use('/evento', eventoRoutes);
 app.use('/comentario', comentarioRoutes);
 app.use('/sorteo', sorteoRoutes);
 app.use('/producto', producto)
+app.use('/categoria',categoria)
+app.use('/quienesSomos', quienesSomos)
 
 
 // Start server

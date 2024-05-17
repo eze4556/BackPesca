@@ -88,11 +88,12 @@ exports.getAllProductos = async (req, res) => {
 
 exports.getProductoById = async (req, res) => {
   try {
-    const NuevoProducto = await NuevoProducto.findById(req.params.id);
-    if (NuevoProducto == null) {
+    
+    const producto = await NuevoProducto.findById(req.params.id);
+    if (!producto) {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }
-    res.json(NuevoProducto);
+    res.json(producto);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

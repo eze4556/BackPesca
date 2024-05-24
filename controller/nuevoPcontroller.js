@@ -3,11 +3,12 @@ const NuevoProducto = require('../models/nuevoProducto');
 const Categoria = require('../models/categoria');
 
 
+const fs = require('fs');
+const path = require('path'); 
 
 
-
-
-
+// imagen: req.
+      //  file.filename,
 
 exports.createNuevoProducto = async (req, res) => {
   try {
@@ -21,7 +22,7 @@ exports.createNuevoProducto = async (req, res) => {
     const producto = new NuevoProducto({
       nombre: req.body.nombre,
       descripcion: req.body.descripcion,
-      imagen: req.file.filename,
+      imagen: req.file.path,
       precio: req.body.precio,
       descuento: req.body.descuento || 0,
       precioFinal: req.body.precio - (req.body.descuento || 0),
@@ -86,17 +87,32 @@ exports.getAllProductos = async (req, res) => {
   }
 };
 
+// exports.getProductoById = async (req, res) => {
+//   try {
+//     const NuevoProducto = await NuevoProducto.findById(req.params.id);
+//     if (!NuevoProducto) {
+//       return res.status(404).json({ message: 'Producto no encontrado' });
+//     }
+//     res.json(NuevoProducto);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
+
 exports.getProductoById = async (req, res) => {
   try {
-    const NuevoProducto = await NuevoProducto.findById(req.params.id);
-    if (NuevoProducto == null) {
+    
+    const producto = await NuevoProducto.findById(req.params.id);
+    if (!producto) {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }
-    res.json(NuevoProducto);
+    res.json(producto);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
 
 // Controlador para obtener un producto por su ID
 exports.getProductoByCategoriaId = async (req, res) => {
@@ -111,29 +127,29 @@ exports.getProductoByCategoriaId = async (req, res) => {
 
 exports.updateProducto = async (req, res) => {
   try {
-    const NuevoProducto = await NuevoProducto.findById(req.params.id);
-    if (NuevoProducto == null) {
+    let nuevoProducto = await NuevoProducto.findById(req.params.id);
+    if (!nuevoProducto) {
       return res.status(404).json({ message: 'Producto no encontrado' });
     }
-    if (req.body.nombre != null) {
-      producto.nombre = req.body.nombre;
+
+    // Actualizar campos si se proporcionan en el cuerpo de la solicitud
+    if (req.body.nombre) nuevoProducto.nombre = req.body.nombre;
+    if (req.body.imagen) nuevoProducto.imagen = req.body.imagen;
+    if (req.body.precio) nuevoProducto.precio = req.body.precio;
+    if (req.body.descuento) {
+      nuevoProducto.descuento = req.body.descuento;
+      nuevoProducto.precioFinal = nuevoProducto.precio - nuevoProducto.descuento;
     }
-    if (req.body.imagen != null) {
-      producto.imagen = req.body.imagen;
-    }
-    if (req.body.precio != null) {
-      producto.precio = req.body.precio;
-    }
-    if (req.body.descuento != null) {
-      producto.descuento = req.body.descuento;
-      producto.precioFinal = req.body.precio - req.body.descuento;
-    }
-    const productoActualizado = await producto.save();
+
+    const productoActualizado = await nuevoProducto.save();
     res.json(productoActualizado);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error(error); // Registrar el error completo
+    res.status(400).json({ message: 'Error al actualizar el producto' });
   }
 };
+
+
 
 exports.deleteProducto = async (req, res) => {
   try {
@@ -141,6 +157,14 @@ exports.deleteProducto = async (req, res) => {
     if (nuevoProducto == null) {
       return res.status(404).json({ message: 'Nuevo Producto no encontrado' });
     }
+
+
+ // Eliminar la imagen asociada al producto del servidor
+    const imagenPath = path.join(__dirname, '../uploads', nuevoProducto.imagen);
+    if (fs.existsSync(imagenPath)) {
+      fs.unlinkSync(imagenPath);
+    }
+
     await nuevoProducto.deleteOne({ _id: req.params.id });
     res.json({ message: 'Nuevo Producto eliminado correctamente' });
   } catch (error) {

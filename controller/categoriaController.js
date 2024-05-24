@@ -1,6 +1,7 @@
 // controllers/categoriaController.js
 const Categoria = require('../models/categoria');
 
+ // imagen: req.file.filename 
 
 exports.createCategoria = async (req, res) => {
   try {
@@ -10,7 +11,8 @@ exports.createCategoria = async (req, res) => {
     const nuevaCategoria = new Categoria({
       nombre: req.body.nombre,
      
-      imagen: req.file.filename 
+     
+      imagen: req.file.path,
     });
     await nuevaCategoria.save();
     res.status(201).json({ message: 'Categoría agregada exitosamente' });

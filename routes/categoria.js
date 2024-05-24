@@ -6,14 +6,20 @@ const multer = require('multer')
 const path = require('path')
 
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads'); // Directorio donde se almacenarán las imágenes de categorías
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../cloudinaryConfig');
+
+
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'categorias',
+    format: async (req, file) => 'jpeg', 
+    public_id: (req, file) => Date.now().toString() + '-' + file.originalname,
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Nombre de la imagen
-  }
-});
+})
+
 
 const upload = multer({ storage: storage });
 

@@ -7,7 +7,7 @@ exports.createSomos = async (req, res) => {
     console.log('Body:', req.body); 
     console.log('File:', req.file); 
     const nuevoSomos = new QuienesSomos({
-      imagen: req.file.filename,
+      imagen: req.file.path,
       descripcion: req.body.descripcion
     });
     await nuevoSomos.save();

@@ -9,7 +9,7 @@ exports.createSorteo = async (req, res) => {
     console.log('Body:', req.body); 
     console.log('File:', req.file); 
     const nuevoSorteo = new Sorteo({
-      imagen: req.file.filename,
+      imagen: req.file.path,
       titulo: req.body.titulo,
       fecha: req.body.fecha,
       nombre: req.body.nombre,

@@ -1,6 +1,13 @@
 // controllers/eventoController.js
 const Evento = require('../models/evento');
 
+
+const fs = require('fs');
+const path = require('path'); 
+
+
+
+
 // Controlador para crear un nuevo evento
 // exports.createEvento = async (req, res) => {
 //   try {
@@ -11,6 +18,7 @@ const Evento = require('../models/evento');
 //     res.status(500).json({ error: error.message });
 //   }
 // };
+      
 
 exports.createEvento = async (req, res) => {
   try {
@@ -18,7 +26,8 @@ exports.createEvento = async (req, res) => {
     console.log('Body:', req.body); 
     console.log('File:', req.file); 
     const nuevoEvento = new Evento({
-      imagen: req.file.filename,
+
+      imagen: req.file.path,
       nombre: req.body.nombre,
       fecha: req.body.fecha,
       descripcion: req.body.descripcion 
@@ -40,6 +49,15 @@ exports.deleteEvento = async (req, res) => {
     if (!evento) {
       return res.status(404).json({ message: 'Evento no encontrado' });
     }
+
+// Eliminar la imagen asociada al producto del servidor
+    const imagenPath = path.join(__dirname, '../uploads', evento.imagen);
+    if (fs.existsSync(imagenPath)) {
+      fs.unlinkSync(imagenPath);
+    }
+
+
+
     res.json({ message: 'Evento eliminado exitosamente' });
   } catch (error) {
     res.status(500).json({ error: error.message });
